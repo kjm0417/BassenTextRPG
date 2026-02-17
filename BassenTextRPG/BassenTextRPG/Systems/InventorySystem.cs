@@ -1,0 +1,199 @@
+﻿using System.Collections.Generic;
+using BassenTextRPG.Models;
+using BassenTextRPG.Utils;
+
+namespace BassenTextRPG.Systems;
+using System;
+
+
+public class InventorySystem
+{
+    #region 프로퍼티
+
+    //아이템 목록
+    private List<Item> Items { get; set; }
+
+    //아이템 개수(읽기 전용이다라고 됨)
+    public int Count => Items.Count; //goes to
+
+    // public int Count
+    // {
+    //     get { return Items.Count; }
+    // }
+    #endregion
+
+    #region 생성자
+
+    public InventorySystem()
+    {
+        Items = new List<Item>();
+    }
+
+    #endregion
+
+    #region 아이템 관리
+    //아이템 추가
+    public void AddItem(Item item)
+    {
+        Items.Add(item);
+        Console.WriteLine($"{item.Name}을 인벤토리에 추가했습니다!");
+    }
+    //아이템 삭제
+    public bool RemoveItem(Item item)
+    {
+        if (Items.Remove(item))
+        {
+            Console.WriteLine($"{item.Name}을 삭제했습니다.");
+            return true;
+        }
+        
+        return false;
+    }
+    
+    //인덱스 값으로 아이템 반환
+    public Item? GetItem(int index)
+    {
+        if (index >= 0 && index < Items.Count)
+        {
+            return Items[index];
+        }
+        return null;
+        
+    }
+    
+    #endregion
+
+    #region 인벤토리 표시
+
+    public void DisPlayInventory()
+    {
+        Console.Clear();
+        Console.WriteLine("\n╔════════════════════════════════╗");
+        Console.WriteLine("║         인벤토리               ║");
+        Console.WriteLine("╚════════════════════════════════╝");
+
+        if (Items.Count == 0)
+        {
+            Console.WriteLine("인벤토리가 비어있습니다.");
+            return;
+        }
+        
+        Console.WriteLine("\n [보유 아이템]");
+        for (int i = 0; i < Items.Count; i++)
+        {
+            Console.Write($"[{i + 1}]");
+            Items[i].DisPlayInfo();
+        }
+        
+       
+    }
+
+    public void ShowInventory(Player? player)
+    {
+        while (true)
+        {
+            DisPlayInventory();
+
+            Console.WriteLine("\n선택하세요");
+            Console.WriteLine("1. 아이템 사용");
+            Console.WriteLine("2. 아이템 버리기");
+            Console.WriteLine("0. 나가기");
+            Console.Write("선택 :");
+            string? input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "1":
+                    //아이템 사용로직
+                    UseItem(player);
+                    break;
+                case "2":
+                    //아이템 버리기
+                    DropItem(player);
+                    break;
+                case "0":
+                    return;
+                default:
+                    Console.WriteLine("잘못된 선택입니다!");
+                    break;
+            }
+        }
+    }
+    
+    #endregion
+
+    #region 아이템 사용
+
+    private void UseItem(Player player)
+    {
+        if (Items.Count == 0)
+        {
+            Console.WriteLine("인벤토리가 비어있습니다");
+            return;
+        }
+        
+        Console.Write("\n사용할 아이템 번호 ( 0: 취소)");
+        if (int.TryParse(Console.ReadLine(), out int index) && index > 0 && index <= Items.Count)
+        {
+            Item item = Items[index-1];
+            if (item.Use(player))
+            {
+                //소모품일 경우 사용 후 리스트에서 제가함
+                if (item is Consumable)
+                {
+                    RemoveItem(item);
+                }
+            }
+        }
+        else if (index != 0)
+        {
+            Console.WriteLine("잘못된 선택입니다.");
+        }
+    }
+
+    #endregion
+
+    #region 아이템 버리기
+
+    private void DropItem(Player player)
+    {
+        if (Items.Count == 0) return;
+        
+        Console.WriteLine("\n버릴 아이템 번호 (0 : 취소) > ");
+
+        if (int.TryParse(Console.ReadLine(), out int index) && index > 0 && index <= Items.Count)
+        {
+            Item item = Items[index-1];
+            Console.Write($"정말 {item.Name}을 버리겠습니까? (y/n)");
+
+            if (Console.ReadLine()?.ToLower() == "y")
+            {
+                //장착 해제 로직
+                if (item is Equipment equipment)
+                {
+                    if (equipment == player.EquipmentWeapon)
+                    {
+                        player.UnequipItem(EquipmentSlot.Weapon);
+                    }
+                    else if (equipment == player.EquipmentArmor)
+                    {
+                        player.UnequipItem(EquipmentSlot.Armor);
+                    }
+                }
+                
+                RemoveItem(item);
+                
+                Console.WriteLine($"{item.Name}을 버렸습니다. ");
+            }
+        }
+        else if (index != 0)
+        {
+            Console.WriteLine("잘못된 선택입니다");
+            ConsoleUI.PressAnyKey();
+        }
+    }
+
+    
+
+    #endregion
+}

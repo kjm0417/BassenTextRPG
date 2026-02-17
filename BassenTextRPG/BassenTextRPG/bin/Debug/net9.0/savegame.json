@@ -1,0 +1,43 @@
+{
+  "Player": {
+    "Name": "asd",
+    "Job": "Warrior",
+    "Level": 1,
+    "CureentHp": 150,
+    "CureentMp": 30,
+    "MaxMp": 30,
+    "MaxHp": 150,
+    "AttackPower": 20,
+    "DefensePower": 15,
+    "Gold": 1000,
+    "EquipedWeaponName": "목검",
+    "EquipedArmorName": "천갑옷"
+  },
+  "Inventory": [
+    {
+      "ItemType": "Equipment",
+      "Name": "목검",
+      "Slot": "Weapon"
+    },
+    {
+      "ItemType": "Equipment",
+      "Name": "천갑옷",
+      "Slot": "Armor"
+    },
+    {
+      "ItemType": "Consumable",
+      "Name": "체력포션",
+      "Slot": null
+    },
+    {
+      "ItemType": "Consumable",
+      "Name": "체력포션",
+      "Slot": null
+    },
+    {
+      "ItemType": "Consumable",
+      "Name": "마나포션",
+      "Slot": null
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\bin\Debug\net9.0\BassenTextRPG.exe
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\bin\Debug\net9.0\BassenTextRPG.deps.json
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\bin\Debug\net9.0\BassenTextRPG.runtimeconfig.json
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\bin\Debug\net9.0\BassenTextRPG.dll
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\bin\Debug\net9.0\BassenTextRPG.pdb
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\obj\Debug\net9.0\BassenTextRPG.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\obj\Debug\net9.0\BassenTextRPG.AssemblyInfoInputs.cache
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\obj\Debug\net9.0\BassenTextRPG.AssemblyInfo.cs
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\obj\Debug\net9.0\BassenTextRPG.csproj.CoreCompileInputs.cache
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\obj\Debug\net9.0\BassenTextRPG.dll
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\obj\Debug\net9.0\refint\BassenTextRPG.dll
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\obj\Debug\net9.0\BassenTextRPG.pdb
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\obj\Debug\net9.0\BassenTextRPG.genruntimeconfig.cache
+C:\Users\Main\RiderProjects\BassenTextRPG\BassenTextRPG\obj\Debug\net9.0\ref\BassenTextRPG.dll
